@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate {
+class SecondViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var collegeName: UILabel!
@@ -17,9 +17,12 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     @IBOutlet weak var webAddress: UITextField!
     @IBOutlet weak var webButton: UIButton!
     
+    var picker = UIImagePickerController()
     var passData = college()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.picker.delegate = self
+        self.picker.allowsEditing = true
         self.collegeLocation.delegate = self
         self.collegeStudents.delegate = self
         self.navigationItem.title = passData.name
@@ -40,5 +43,20 @@ class SecondViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         let next = segue.destinationViewController as! WebViewController
         next.passData2 = passData
     }
-
+    @IBAction func selectedImage(sender: UITapGestureRecognizer){
+        let selectedPoint = sender.locationInView(self.view)
+        if CGRectContainsPoint(image.frame, selectedPoint){
+            self.picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(self.picker, animated: true, completion: nil)
+        }
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            self.image.image = selectedImage
+        }
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.picker.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

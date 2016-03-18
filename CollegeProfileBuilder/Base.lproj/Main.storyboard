@@ -114,14 +114,23 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="O2v-Cr-4hX">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="OVz-X5-Swh"/>
+                                    <constraint firstAttribute="width" constant="20" id="QsD-ay-A0V"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="O2v-Cr-4hX" firstAttribute="centerX" secondItem="0QE-9M-T7q" secondAttribute="centerX" id="8I3-br-bRb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mNO-KI-PKZ" secondAttribute="trailing" constant="-20" id="FVp-A1-up2"/>
                             <constraint firstItem="L6I-6V-KrL" firstAttribute="top" secondItem="mNO-KI-PKZ" secondAttribute="bottom" id="KkL-YK-4vk"/>
                             <constraint firstItem="EBx-gD-KlK" firstAttribute="top" secondItem="0QE-9M-T7q" secondAttribute="topMargin" id="OtG-fm-hWI"/>
                             <constraint firstItem="mNO-KI-PKZ" firstAttribute="top" secondItem="EBx-gD-KlK" secondAttribute="bottom" id="U4D-Z6-4PG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EBx-gD-KlK" secondAttribute="trailing" constant="-20" id="aDF-gj-Lub"/>
+                            <constraint firstItem="O2v-Cr-4hX" firstAttribute="centerY" secondItem="0QE-9M-T7q" secondAttribute="centerY" id="mmT-Hj-yVQ"/>
                             <constraint firstItem="mNO-KI-PKZ" firstAttribute="leading" secondItem="0QE-9M-T7q" secondAttribute="leadingMargin" constant="-20" id="nC5-UF-MBL"/>
                             <constraint firstItem="EBx-gD-KlK" firstAttribute="leading" secondItem="0QE-9M-T7q" secondAttribute="leadingMargin" constant="-20" id="tv9-d4-SfN"/>
                         </constraints>
@@ -130,6 +139,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="undo" id="0Ck-W5-90x"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="indicator" destination="O2v-Cr-4hX" id="17v-18-tyc"/>
                         <outlet property="webView" destination="mNO-KI-PKZ" id="987-F3-x4D"/>
                     </connections>
                 </viewController>
@@ -190,6 +200,7 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qgq-lO-GDj">
                                 <rect key="frame" x="225" y="84" width="150" height="150"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="ek4-yD-lBp"/>
                                     <constraint firstAttribute="width" constant="150" id="uq2-JX-W7H"/>
@@ -256,6 +267,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yRK-vp-0Gi" firstAttribute="centerX" secondItem="CO7-cc-diB" secondAttribute="centerX" id="0tR-wD-0AB"/>
                             <constraint firstItem="hnl-eh-wiF" firstAttribute="top" secondItem="Ogh-qF-9gm" secondAttribute="bottom" constant="20" id="2Lu-cc-xXR"/>
@@ -280,6 +292,9 @@
                             <constraint firstItem="AuL-wM-5Oi" firstAttribute="leading" secondItem="CO7-cc-diB" secondAttribute="leadingMargin" constant="25" id="uLg-c4-aFs"/>
                             <constraint firstItem="VnH-Rl-DpZ" firstAttribute="top" secondItem="4gb-f5-2dz" secondAttribute="bottom" constant="26" id="y5T-GD-KUJ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4H4-uU-kKR" appends="YES" id="0H1-2H-mZi"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="collegeLocation" destination="GXB-2S-ob3" id="qvF-4W-5Ee"/>
@@ -291,8 +306,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXU-Tc-EtH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4H4-uU-kKR">
+                    <connections>
+                        <action selector="selectedImage:" destination="tdB-C3-qO8" id="fhu-Mi-xo8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1415" y="-343"/>
+            <point key="canvasLocation" x="1474" y="-353"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bzB-cS-p2f">

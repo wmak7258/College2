@@ -8,8 +8,9 @@
 
 import UIKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, UIWebViewDelegate {
 
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var webView: UIWebView!
     var passData2 = college()
     override func viewDidLoad() {
